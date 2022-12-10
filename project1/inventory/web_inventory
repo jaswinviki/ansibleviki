@@ -1,0 +1,2 @@
+[web_group]
+host-1 ansible_host=172.31.85.68 ansible_user=ec2-user
