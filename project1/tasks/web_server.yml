@@ -1,0 +1,20 @@
+  - name: apache latest version
+    ansible.builtin.yum:
+        name: httpd
+        state: latest
+    become: true
+    
+  - name: ensure running
+    service:
+        name: httpd
+        state: started
+    become: true
+
+  - name: copy file
+    ansible.builtin.copy:
+        src: ./index1.html
+        dest: /var/www/html/index1.html
+        owner: apache
+        group: apache
+        mode: '0644'
+    become: true

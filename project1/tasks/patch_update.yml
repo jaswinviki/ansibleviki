@@ -1,0 +1,13 @@
+  - name: yum update
+    ansible.builtin.yum:
+        name: '*'
+        state: latest
+    become: true
+    
+  - name: shell command
+    shell: 'ls -latr'
+    register: command_output
+    become: true
+    
+  - debug:
+        var: command_output.stdout_lines
