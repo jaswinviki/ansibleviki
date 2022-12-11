@@ -1,0 +1,7 @@
+---
+- name: Cleanup Server
+  hosts: host-1
+  
+  tasks:
+  
+    - include: tasks/remove_apache.yml

@@ -1,0 +1,22 @@
+    - name: Install MySQL packages
+      ansible.builtin.yum:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - mariadb-server
+          - MySQL-python
+
+    - name: Enable the MySQL service
+      service:
+        name: mariadb
+        state: started
+        enabled: true
+        
+    - name: root Mysql
+      mysql_user:
+        login_user: root
+        login_password: "{{ password }}"
+        name: root
+        password: "{{ password }}"
+        check_implicit_admin: true

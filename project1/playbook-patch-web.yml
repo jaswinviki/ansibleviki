@@ -1,5 +1,5 @@
 ---
-- name: yum update section
+- name: Configure Patching and Webserver
   hosts: host-1
     
   tasks:
