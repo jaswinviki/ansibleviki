@@ -1,4 +1,3 @@
 db_user: ec2-user
 db_pass: Simpli@123
 db_name: demoansible
-password: Password1
