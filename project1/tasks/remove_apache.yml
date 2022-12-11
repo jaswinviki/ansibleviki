@@ -1,0 +1,6 @@
+  - name: Uninstall apache version
+    ansible.builtin.yum:
+        name: httpd
+        state: absent
+    become: true
+   

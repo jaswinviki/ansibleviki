@@ -1,0 +1,7 @@
+---
+- name: Configure Patching and Webserver
+  hosts: host-1
+    
+  tasks:
+    - include: tasks/patch_update.yml
+    - include: tasks/web_server.yml

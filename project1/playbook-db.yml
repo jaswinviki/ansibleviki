@@ -1,0 +1,8 @@
+---
+- name: Play to Install and Manage MySQL 8.0 AlmaLinux 8
+  hosts: host-1
+  become: true 
+  vars: 
+    - ansible_python_interpreter: /usr/bin/python2
+  tasks:
+    - include: tasks/database_configuration.yml

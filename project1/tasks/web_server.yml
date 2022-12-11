@@ -1,8 +1,3 @@
----
-- name: yum update section
-  hosts: host-1
-    
-  tasks:
   - name: apache latest version
     ansible.builtin.yum:
         name: httpd
@@ -23,19 +18,3 @@
         group: apache
         mode: '0644'
     become: true
-  - name: yum update
-    ansible.builtin.yum:
-        name: '*'
-        state: latest
-    become: true
-    
-  - name: shell command
-    shell: 'ls -latr'
-    register: command_output
-    become: true
-    
-  - debug:
-        var: command_output.stdout_lines
-        
-    
-        

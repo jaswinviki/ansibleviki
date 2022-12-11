@@ -1,0 +1,42 @@
+---
+- name: Configure Patching and Webserver
+  hosts: localhost
+  vars:
+    - directory: /home/ec2-user/environment/ansible
+  
+  vars_prompt:
+  
+    - name: project
+      prompt: Name of the ansible Project/Customer?
+      private: no
+  
+  tasks:
+      - name: Create Project directory and group vars folder
+        file:
+            path: "{{ directory }}/{{ project }}/group_vars"
+            state: directory
+        delegate_to: localhost
+        
+      - name: Create Project directory and Host vars folder
+        file:
+            path: "{{ directory }}/{{ project }}/host_vars"
+            state: directory
+        delegate_to: localhost
+    
+      - name: Create Project directory and tasks vars folder
+        file:
+            path: "{{ directory }}/{{ project }}/tasks"
+            state: directory
+        delegate_to: localhost        
+    
+      - name: Copy Ansible.cfg file
+        copy:
+            src: "{{ directory }}/project1/ansible.cfg"
+            dest: "{{ directory }}/{{ project }}/ansible.cfg"
+        delegate_to: localhost
+
+      - name: Copy Inventory Directory
+        copy:
+            src: "{{ directory }}/project1/inventory"
+            dest: "{{ directory }}/{{ project }}/"
+        delegate_to: localhost

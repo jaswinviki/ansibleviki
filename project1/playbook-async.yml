@@ -1,0 +1,12 @@
+---
+    - name: Configure Patching and Webserver
+      hosts: host-1
+      
+      tasks:
+      
+        - name: Monitor Web Application for 6 Minutes
+          hosts: web_server
+          command: /opt/monitor_webapp.py
+          async: 360
+          poll: 10 #default poll time
+          poll: 0 # don't wait to complete
